@@ -4,7 +4,7 @@ terraform {
     organization = "rparmer"
 
     workspaces {
-      name = "core"
+      name = "config"
     }
   }
 }
