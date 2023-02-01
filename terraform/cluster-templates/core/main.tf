@@ -10,7 +10,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source               = "../modules/vpc"
+  source               = "../../modules/vpc"
   vpc_name             = var.cluster_name
   vpc_cidr             = var.vpc_cidr
   public_subnet_count  = var.public_subnet_count
@@ -18,7 +18,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source       = "../modules/eks"
+  source       = "../../modules/eks"
   cluster_name = var.cluster_name
   eks_version  = var.cluster_version
   vpc_id       = module.vpc.vpc_id
