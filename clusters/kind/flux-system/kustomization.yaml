@@ -3,3 +3,12 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - gotk-sync.yaml
+patches:
+- patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/resources/limits
+      value:
+        cpu: 250m
+        memory: 256Mi
+  target:
+    kind: Deployment
