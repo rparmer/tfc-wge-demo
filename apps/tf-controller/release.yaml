@@ -30,9 +30,11 @@ spec:
       retries: 3
   values:
     image:
-      tag: v0.14.0-rc.5
+      repository: ghcr.io/rparmer/tf-controller
+      tag: test # v0.14.0-rc.5
     runner:
       image:
-        tag: v0.14.0-rc.5
+        repository: ghcr.io/rparmer/tf-runner
+        tag: test # v0.14.0-rc.5
       grpc:
         maxMessageSize: 30
