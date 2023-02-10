@@ -1,0 +1,49 @@
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  labels:
+    templates.weave.works/template-name: tfc-demo
+    templates.weave.works/template-namespace: default
+  name: testing-core
+  namespace: flux-system
+spec:
+  approvePlan: auto
+  cloud:
+    hostname: app.terraform.io
+    organization: rparmer
+    workspaces:
+      name: core-1
+  # backendConfig:
+  #   # disable: true
+  #   customConfiguration: |
+  #     cloud {
+  #       hostname = "app.terraform.io"
+  #       organization = "rparmer"
+
+  #       workspaces {
+  #         name = "core-2"
+  #       }
+  #     }
+  cliConfigSecretRef:
+    name: tfc-cli-config
+  destroyResourcesOnDeletion: false
+  interval: 1h
+  path: ./terraform/cluster-templates/core
+  retryInterval: 20s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  vars:
+  - name: cluster_name
+    value: testing
+  - name: cluster_version
+    value: "1.24"
+  - name: region
+    value: us-east-1
+  - name: vpc_cidr
+    value: 10.0.0.0/16
+  - name: public_subnet_count
+    value: "3"
+  - name: private_subnet_count
+    value: "3"
