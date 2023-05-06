@@ -16,6 +16,7 @@ spec:
   chart:
     spec:
       chart: tf-controller
+      version: 0.11.0
       sourceRef:
         kind: HelmRepository
         name: tf-controller
@@ -29,12 +30,12 @@ spec:
     remediation:
       retries: 3
   values:
-    image:
-      repository: ghcr.io/rparmer/tf-controller
-      tag: test # v0.14.0-rc.5
-    runner:
-      image:
-        repository: ghcr.io/rparmer/tf-runner
-        tag: test # v0.14.0-rc.5
+    # image:
+    #   repository: ghcr.io/rparmer/tf-controller
+    #   tag: test # v0.14.0-rc.5
+    # runner:
+    #   image:
+    #     repository: ghcr.io/rparmer/tf-runner
+    #     tag: test # v0.14.0-rc.5
       grpc:
         maxMessageSize: 30
